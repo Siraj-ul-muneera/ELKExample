@@ -6,7 +6,7 @@ node {
 	}
 
 	stage('Build image') {
-		app = docker.build("${dockerhubaccountid}/${application}:${BUILD_NUMBER}")
+		app = docker.build("${javeedsocial}/${application}:${BUILD_NUMBER}")
 	}
 
 	stage('Push image') {
@@ -17,7 +17,7 @@ node {
 	}
 
 	stage('Deploy') {
-		sh ("docker run -d -p 81:8080 -v /var/log/:/var/log/ ${dockerhubaccountid}/${application}:${BUILD_NUMBER}")
+		sh ("docker run -d -p 81:8080 -v /var/log/:/var/log/ ${javeedsocial}/${application}:${BUILD_NUMBER}")
 	}
 	
 	stage('Remove old images') {
